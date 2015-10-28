@@ -1,29 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myNewPost">
+        New Post
+      </button>
+    </div>
+  </div>
 
-<h1>Listing Posts</h1>
+  <br>
+  <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tittle</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="row" id="container_posts">
+    <%= render @posts %>    
+  </div>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.tittle %></td>
-        <td><%= post.content %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+  <!-- Modal -->
+  <%= form_for(@post) do |f| %>
+  <div class="modal fade" id="myNewPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Post</h4>
+        </div>
+        <div class="modal-body">
+          <div class="field">
+            <%= f.label :tittle %><br>
+            <%= f.text_field :tittle, class: "form-control post_tittle" %>
+          </div>
+          <div class="field">
+            <%= f.label :content %><br>
+            <%= f.text_area :content, class: "form-control post_content" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="myNewPostClose">Close</button>
+          <%= submit_tag "Create", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>
