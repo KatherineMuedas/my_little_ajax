@@ -1,4 +1,4 @@
-<div class="col-md-4 blog-main box text-center" id="post_<%=post.id%>">
+<div class="col-md-4 text-center" id="post_<%=post.id%>">
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title"><%= post.tittle %></h3>
@@ -18,31 +18,6 @@
   </div>  
 
   <!-- Modal - update posts-->
-  <%= form_for(post, :method => :put, remote: true) do |f| %>
-  <div class="modal fade" id="myUpdatePost_<%= post.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Edit</h4>
-        </div>
-        <div class="modal-body">
-          <div class="field">
-            <%= f.label :tittle %><br>
-            <%= f.text_field :tittle, class: "form-control" %>
-          </div>
-          <div class="field">
-            <%= f.label :content %><br>
-            <%= f.text_area :content, class: "form-control" %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" id="myUpdateButton_<%= post.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= submit_tag "Update", class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
+  <%= render 'edit_form', post: post %>  
 </div>
 
