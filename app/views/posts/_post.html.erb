@@ -12,15 +12,15 @@
         <button type="button" class="btn btn-warming" data-toggle="modal" data-target="#myUpdatePost_<%= post.id %>">
           Edit
         </button>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", remote: true %>
       </div>
     </div>
   </div>  
 
   <!-- Modal - update posts-->
-  <%= form_for(@post, :method => :put) do |f| %>
+  <%= form_for(post, :method => :put, remote: true) do |f| %>
   <div class="modal fade" id="myUpdatePost_<%= post.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" id="myUpdateButton_<%= post.id%>" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" id="myUpdateButton_<%= post.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
           <%= submit_tag "Update", class: "btn btn-primary" %>
         </div>
       </div>
