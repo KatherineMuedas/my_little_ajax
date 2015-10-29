@@ -4,11 +4,11 @@ Basic rails application using AJAX.
 
 Steps to do Ajax in a Rails app:
 
-1)Adds in the HTML remote: true in the accion that you want to add AJAX.
+1) Adds in the HTML remote: true in the accion that you want to add AJAX.
 
-2)Adds format.js in the corresponding accion of the controller.
+2) Adds format.js in the corresponding accion of the controller.
 
-3)Create a file call action_name.js.erb.
+3) Creates a file call action_name.js.erb
 
 
 
